@@ -4,33 +4,33 @@ pragma solidity >=0.7.0 <0.9.0;
 
 contract Bet {
     
-    uint16 totallParticipant;//جمع تعداد شرکت کننده ها
-    uint totallAmount; //جمع مبلغ داخل قرار داد      
-    uint firstNumberTotal;//جمع بلیط های شماره یک
-    uint secondNumberTotal;//جمع بلیط های شماره ی دو
-    uint thirdNumberTotal;//جمع بلیط های شماره ی سه
-    uint startMatchTime;//زمان شروع مسابقه
-    uint finishMatchTime;//زمان پایان مسابقه
-    uint winnerReward;//جایزه ی هر بلیط برنده
-    uint winNumber;// شماره بلیط برنده
-    address admin;//آدرس مدیر 
+    uint16 totallParticipant;
+    uint totallAmount;      
+    uint firstNumberTotal;
+    uint secondNumberTotal;
+    uint thirdNumberTotal;
+    uint startMatchTime;
+    uint finishMatchTime;
+    uint winnerReward;
+    uint winNumber;
+    address admin; 
     
     
     
-    mapping(address => bool)  OnlyOnce;//هر آدرس یک بلیط
-    mapping(address=> uint )  ticketNumber;//شماره بلیط بین یک تا سه
-    mapping(address => bool)  hasRecievedReward;//جایزه دریافت شده یا خیر
+    mapping(address => bool)  OnlyOnce;
+    mapping(address=> uint )  ticketNumber;
+    mapping(address => bool)  hasRecievedReward;
     
    
    
    constructor(){
-       admin = msg.sender;//ادمین مشخص می شود
+       admin = msg.sender;
    }
    
    
    
    
-   //قیمت هر بلیط یک اتریوم
+  
    modifier requireEther() {
        require(msg.value == 1 ether , "value must be equall 1 ether");
        _;
@@ -39,7 +39,7 @@ contract Bet {
    
    
    
-   //شماره هر بلیط فقط بین یک تا سه
+   
    modifier limitedTicketNumber(uint _num) {
       require(  _num > 0 && _num <=3 , "ticket Number must be 1 or 2 or 3" ) ;
       _;
